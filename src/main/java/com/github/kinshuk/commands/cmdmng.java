@@ -69,8 +69,8 @@ public class cmdmng extends ListenerAdapter {
     @Override
     public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
         String command = event.getName();
-        if(command.equals("ping")){
-            event.reply("pong").queue();
+          if(command.equals("start")){
+            event.reply("Type ``/truth`` for truth."+'\n'+"Type ``/dare`` for dare.").queue();
         }
         if(command.equals("truth")){
             int randomnumber = random.nextInt(25)+1;
@@ -80,9 +80,6 @@ public class cmdmng extends ListenerAdapter {
             int randomnumber = random.nextInt(14)+1;
             event.reply(dareque[randomnumber]).queue();
         }
-        if(command.equals("start")){
-            event.reply("Type ``/truth`` for truth."+'\n'+"Type ``/dare`` for dare.").queue();
-        }
     }
 
 
@@ -91,7 +88,6 @@ public class cmdmng extends ListenerAdapter {
     @Override
     public void onGuildReady(@NotNull GuildReadyEvent event) {
         List<CommandData> commandData = new ArrayList<>();
-        commandData.add(Commands.slash("sup","greetings"));
         commandData.add(Commands.slash("truth","question to ask"));
         commandData.add(Commands.slash("dare","dare to do"));
         commandData.add(Commands.slash("start","To start Truth and dare"));
